@@ -1,0 +1,29 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.29.0'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Build Windows
+      run: flutter build windows
+
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: moodiary-windows-exe
+        path: build/windows/runner/Release/ 
