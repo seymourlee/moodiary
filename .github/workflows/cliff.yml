@@ -45,3 +45,5 @@ jobs:
           gh pr merge --merge --delete-branch changelog-update-${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+flutter-version: 'stable'
